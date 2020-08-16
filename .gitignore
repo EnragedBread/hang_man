@@ -1,0 +1,11 @@
+#test artifacts
+.pytest_cache
+
+#build artifacts
+__pycache__
+
+#saved games
+*.pydata
+
+#system artifacts
+.DS_Store
