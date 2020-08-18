@@ -1,3 +1,6 @@
+import math
+import random
+
 def display_word(word, correct_letters):
     obscured_word = word
     alphabet = set("abcdefghijklmnopqrstuvwxyz")
@@ -7,13 +10,17 @@ def display_word(word, correct_letters):
         obscured_word = obscured_word.replace(letter, "_")
     return " ".join(obscured_word)
 
+word_list = ["composition", "child", "technology", "help", "please", "obscured", "pneumonoultramicroscopicsilicovolcanoconiosis"]
+
 if __name__ == "__main__":
     print(f"Welcome to Hang Man!")
 
     life_left = 7
 
-    word = "pneumonoultramicroscopicsilicovolcanoconiosis"
-    correct_guesses = set("peutracv")
+    word = word_list[random.randint(0, len(word_list) - 1)].lower()
+    word_letters = set(word)
+    num_to_start = math.floor(0.25*len(word_letters))
+    correct_guesses = set(random.sample(word_letters, num_to_start))
 
     letters_remaining = set(word) - correct_guesses
 
