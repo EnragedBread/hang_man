@@ -2,10 +2,11 @@
 .pytest_cache
 
 #build artifacts
-__pycache__
+__pycache__/
 
-#saved games
-*.pydata
+#game data
+wordlists/*
+!wordlists/default.txt
 
 #system artifacts
 .DS_Store

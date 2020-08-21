@@ -1,6 +1,8 @@
 import math
 import random
 
+import word_file
+
 def display_word(word, correct_letters):
     obscured_word = word
     alphabet = set("abcdefghijklmnopqrstuvwxyz")
@@ -10,12 +12,16 @@ def display_word(word, correct_letters):
         obscured_word = obscured_word.replace(letter, "_")
     return " ".join(obscured_word)
 
-word_list = ["composition", "child", "technology", "help", "please", "obscured", "pneumonoultramicroscopicsilicovolcanoconiosis"]
-
 if __name__ == "__main__":
     print(f"Welcome to Hang Man!")
 
     life_left = 7
+
+    try:
+        word_list = word_file.load_words('default.txt')
+    except word_file.WordListError:
+        print(f"Sorry I was unable to load the Word List!")
+        word_list = ["pneumonoultramicroscopicsilicovolcanoconiosis"]
 
     word = word_list[random.randint(0, len(word_list) - 1)].lower()
     word_letters = set(word)
