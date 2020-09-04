@@ -4,6 +4,72 @@ import random
 import word_file
 
 DEFAULT_WORD = "pneumonoultramicroscopicsilicovolcanoconiosis"
+GALLOWS = [
+'''
+ |--|
+ |  0
+ | \|/
+ |  |
+ | / \\
+_|_
+''',
+'''
+ |--|
+ |  0
+ | \|/
+ |  |
+ | /
+_|_
+''',
+'''
+ |--|
+ |  0
+ | \|/
+ |  |
+ |
+_|_
+''',
+'''
+ |--|
+ |  0
+ | \|/
+ |
+ |
+_|_
+''',
+'''
+ |--|
+ |  0
+ | \|
+ |
+ |
+_|_
+''',
+'''
+ |--|
+ |  0
+ |  |
+ |
+ |
+_|_
+''',
+'''
+ |--|
+ |  0
+ |
+ |
+ |
+_|_
+''',
+'''
+ |--|
+ |
+ |
+ |
+ |
+_|_
+''',
+]
 
 def display_word(word, correct_letters):
     obscured_word = word
@@ -53,6 +119,7 @@ if __name__ == "__main__":
     while len(letters_remaining) > 0 and life_left:
         so_far = display_word(word, correct_guesses)
 
+        print(GALLOWS[life_left])
         print(f"\nYour life total is currently at: {life_left}")
         print(f"\nPrint the rest of the missing letters to finish the word (in all lowercase) {so_far}")
         print(f"\nHere are all of your previous incorrect guesses! ---[{' '.join(incorrect_guesses)}]---")
@@ -74,6 +141,8 @@ if __name__ == "__main__":
 
         all_guesses.add(letter_choice)
 
+    print(GALLOWS[life_left])
+    print(f"Here is the finalized word! {word}")
     if life_left:
         print(f"\nYou win!!!")
     else:
