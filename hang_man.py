@@ -1,5 +1,6 @@
 import math
 import random
+from string import ascii_lowercase
 
 import word_file
 
@@ -73,7 +74,7 @@ _|_
 
 def display_word(word, correct_letters):
     obscured_word = word
-    alphabet = set("abcdefghijklmnopqrstuvwxyz")
+    alphabet = set(ascii_lowercase)
     incorrect_letters = alphabet - correct_letters
 
     for letter in incorrect_letters:
@@ -105,14 +106,19 @@ if __name__ == "__main__":
             word_list = [DEFAULT_WORD]
 
     word = word_list[random.randint(0, len(word_list) - 1)].lower()
-    word_letters = set(word)
+    whitelist = set(ascii_lowercase)
+    word_letters = set()
+    for letter in word:
+        if letter in whitelist:
+            word_letters.add(letter)
+
     num_to_start = math.floor(0.25*len(word_letters))
     correct_guesses = set(random.sample(word_letters, num_to_start))
     incorrect_guesses = set()
 
     all_guesses = correct_guesses
 
-    letters_remaining = set(word) - correct_guesses
+    letters_remaining = word_letters - correct_guesses
 
     life_left = 7
 
